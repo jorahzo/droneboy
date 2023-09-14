@@ -96,8 +96,8 @@ void DroneboyAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     phase = 0;
     wtSize = 1024;
     increment = frequency * wtSize / sampleRate;
-    amplitude = .5;
-    frequency = 500;
+    amplitude = .2;
+    frequency = 100;
     currentSampleRate = sampleRate;
     for (int i = 0; i < wtSize; i++)
     {
@@ -160,8 +160,8 @@ void DroneboyAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juc
         for (int sample = 0; sample < buffer.getNumSamples() ; sample++)
         {
             channelData[sample] = waveTable[(int)phase] * amplitude;
-            updateFrequency();
         }
+        updateFrequency();
     }
     
 }
